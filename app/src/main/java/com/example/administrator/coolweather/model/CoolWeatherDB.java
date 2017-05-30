@@ -16,7 +16,7 @@ import java.util.List;
  */
 
 public class CoolWeatherDB {
-    public static final String DB_NAME = "cool_weather";
+    public static final String DB_NAME = "cool_weather.db";
     public static final int VERSION = 1;
     private static CoolWeatherDB coolWeatherDB;
     private SQLiteDatabase db;
@@ -77,6 +77,7 @@ public class CoolWeatherDB {
         if (cursor.moveToFirst()) {
             do {
                 City city = new City();
+                city.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
                 city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
                 city.setProvinceId(provinceId);
@@ -106,6 +107,7 @@ public class CoolWeatherDB {
         if (cursor.moveToFirst()) {
             do {
                 County county = new County();
+                county.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 county.setCountyName(cursor.getString(cursor.getColumnIndex("county_name")));
                 county.setCountyCode(cursor.getString(cursor.getColumnIndex("county_code")));
                 county.setCityId(cityId);
