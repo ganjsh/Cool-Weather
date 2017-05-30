@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.administrator.coolweather.R;
+import com.example.administrator.coolweather.service.AutoUpdateService;
 import com.example.administrator.coolweather.util.HttpCallbackListener;
 import com.example.administrator.coolweather.util.HttpUtil;
 import com.example.administrator.coolweather.util.Utility;
@@ -63,6 +64,9 @@ public class WeatherActivity extends AppCompatActivity implements View.OnClickLi
 
         switchCity.setOnClickListener(this);
         refreshWeather.setOnClickListener(this);
+
+        Intent intent = new Intent(this, AutoUpdateService.class);
+        startService(intent);
     }
 
     @Override
