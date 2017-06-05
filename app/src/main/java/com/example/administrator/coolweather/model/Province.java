@@ -5,9 +5,9 @@ package com.example.administrator.coolweather.model;
  */
 
 public class Province {
-    priavte int id;
+    private int id;
     private String provinceName;
-    private String provinceCode;
+    private int provinceCode;
 
     public int getId() {
         return id;
@@ -17,7 +17,7 @@ public class Province {
         return provinceName;
     }
 
-    public String getProvinceCode() {
+    public int getProvinceCode() {
         return provinceCode;
     }
 
@@ -29,7 +29,7 @@ public class Province {
         this.provinceName = provinceName;
     }
 
-    public void setProvinceCode(String provinceCode) {
+    public void setProvinceCode(int provinceCode) {
         this.provinceCode = provinceCode;
     }
 }

@@ -51,7 +51,7 @@ public class CoolWeatherDB {
                 Province province = new Province();
                 province.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 province.setProvinceName(cursor.getString(cursor.getColumnIndex("province_name")));
-                province.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
+                province.setProvinceCode(cursor.getInt(cursor.getColumnIndex("province_code")));
 
                 list.add(province);
             } while (cursor.moveToNext());
@@ -77,8 +77,9 @@ public class CoolWeatherDB {
         if (cursor.moveToFirst()) {
             do {
                 City city = new City();
+                city.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 city.setCityName(cursor.getString(cursor.getColumnIndex("city_name")));
-                city.setCityCode(cursor.getString(cursor.getColumnIndex("city_code")));
+                city.setCityCode(cursor.getInt(cursor.getColumnIndex("city_code")));
                 city.setProvinceId(provinceId);
 
                 list.add(city);
@@ -92,7 +93,7 @@ public class CoolWeatherDB {
         if (county != null) {
             ContentValues values = new ContentValues();
             values.put("county_name", county.getCountyName());
-            values.put("county_code", county.getCountyCode());
+            values.put("weather_id", county.getWeatherId());
             values.put("city_id", county.getCityId());
 
             db.insert("County", null, values);
@@ -106,8 +107,9 @@ public class CoolWeatherDB {
         if (cursor.moveToFirst()) {
             do {
                 County county = new County();
+                county.setId(cursor.getInt(cursor.getColumnIndex("id")));
                 county.setCountyName(cursor.getString(cursor.getColumnIndex("county_name")));
-                county.setCountyCode(cursor.getString(cursor.getColumnIndex("county_code")));
+                county.setWeatherId(cursor.getString(cursor.getColumnIndex("weather_id")));
                 county.setCityId(cityId);
 
                 list.add(county);
